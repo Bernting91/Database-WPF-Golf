@@ -1,0 +1,90 @@
+﻿<Window x:Class="Database_WPF_Golf.InformationPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Database_WPF_Golf"
+        mc:Ignorable="d"
+        Title="InformationPage" Height="450" Width="800">
+    <Grid>
+        <Grid>
+            <Grid x:Name="InformationPages" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="art/Golfclubs.jpg"/>
+                </Grid.Background>
+                <ListBox x:Name="GolfclubsListBox" Background="Transparent" Foreground="White" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="-1,0,266,0" Grid.Row="1" Grid.ColumnSpan="2" SelectionChanged="Golfclub_select">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Grid.Column="1" Text="{Binding Path=Name}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox x:Name="EmployeeListBox"  Visibility="Collapsed" Background="Transparent" Foreground="White" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="0,45,266,144" Grid.RowSpan="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="110"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Salary}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock x:Name="EmployeeTextBlock" Visibility="collapsed" Foreground="White"  HorizontalAlignment="Left" Margin="-1,29,0,0" TextWrapping="Wrap" Text="Employee name and salary" VerticalAlignment="Top"/>
+                <TextBlock x:Name="GolfclubInfoTextBlock" Visibility="Collapsed" Foreground="white" HorizontalAlignment="Left" Margin="41,144,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Golfclub Location" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                <TextBlock x:Name="BackgroundGolfcourse" Visibility="Collapsed" Grid.Row="1" Grid.Column="1" Background="black" Opacity="0.4"></TextBlock>
+                <ListBox x:Name="golfcourseListBox" Visibility="Collapsed" Background="Transparent" FontSize="11" Foreground="white" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" FontFamily="Arial Black">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Holes}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <ListBox x:Name="GolferListBox" Visibility="Collapsed" Background="Transparent" Foreground="White" Grid.Column="2" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="160"/>
+                                    <ColumnDefinition Width="50"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Path=Handicap}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <TextBlock x:Name="GolfcourseTextBlock" Visibility="Collapsed" Foreground="white" Grid.Column="1" HorizontalAlignment="Left" Margin="23,119,0,0" TextWrapping="Wrap" Text="Golfcourses name and holes" VerticalAlignment="Top"/>
+                <ListBox Background="Transparent" Visibility="Collapsed" Foreground="White" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="2" Margin="266,0,0,0" Grid.RowSpan="2"/>
+                <TextBlock x:Name="GolfClubMembers" Visibility="Collapsed" Foreground="White" Grid.Column="1" HorizontalAlignment="Left" Margin="266,119,0,0" TextWrapping="Wrap" Text="Golfclub Members and their HCP" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="GolfclubCountryTextBlock" Visibility="Collapsed" Foreground="White" HorizontalAlignment="Left" Margin="7,41,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Country" VerticalAlignment="Top" Width="111"/>
+                <TextBlock x:Name="GolfClubCityTextBlock" Visibility="Collapsed" Foreground="White" HorizontalAlignment="Left" Margin="123,41,0,0" Grid.Row="2" TextWrapping="Wrap" Text="City" VerticalAlignment="Top" RenderTransformOrigin="0.868,0.495" Width="134"/>
+             
+                <Button x:Name="DeleteButton" Grid.Column="2" Content="Delete" HorizontalAlignment="Left" Margin="21,0,0,0" VerticalAlignment="Top" Height="26" Width="71" Click="DeleteButton_Click"/>
+                <Button x:Name="EditSearchButton" Grid.Column="1" Content="Search and edit" HorizontalAlignment="Left" Margin="181,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="26" Width="94" Click="EditButton_Click"/>
+
+            </Grid>
+            <Button x:Name="AddButton" Content="Add" HorizontalAlignment="Left" Margin="631,0,0,0" VerticalAlignment="Top" Height="26" Width="89" Click="AddButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>
